@@ -38,6 +38,9 @@
   color: #f2f2f2;
 }
 
+.todo-input {
+  padding-left: 2rem;
+}
 #outlined-required {
   padding: 7.5px 14px;
 }
@@ -76,7 +79,7 @@ form {
 }
 
 .addTask {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
   width: 85%;
   padding: 0.6rem;
 }

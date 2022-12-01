@@ -1,6 +1,7 @@
 import Login from "../components/Login";
 import Register from "../components/Register";
 import Home from "../components/Home";
+import TaskList from "../components/TaskList";
 
 const routes = [
   {
@@ -14,6 +15,10 @@ const routes = [
   {
     path: "/home",
     element: <Home />,
+  },
+  {
+    path: "/todo",
+    element: <TaskList />,
   },
 ];
 

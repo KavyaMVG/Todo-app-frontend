@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Task from "./components/Task";
+import Task from "./Task";
 import Button from "@mui/material/Button";
 import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
@@ -53,7 +53,6 @@ export default function TodoList() {
   const [taskList, setTaskList] = useState([]);
   const [searchTodo, setSearchTodo] = useState("");
   const userId = localStorage.getItem("id");
-
   useEffect(() => {
     const getAllData = async () => {
       const response = await axios.get(

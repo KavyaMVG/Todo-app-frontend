@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const style = {
   position: "absolute",
@@ -24,6 +25,7 @@ export default function Task({ task, taskList, setTaskList }) {
   const [checked, setChecked] = useState(false);
   const [open, setOpen] = useState(false);
   const [editTask, setEditTask] = useState("");
+  const navigate = useNavigate();
 
   const deleteTask = async (deleteTaskId) => {
     const response = await axios.delete("http://localhost:3001/todo/delete", {
@@ -32,9 +34,7 @@ export default function Task({ task, taskList, setTaskList }) {
     const { data } = response;
 
     if (data.msg.deletedCount === 1) {
-      const filteredTask = taskList.filter(
-        (task) => !(task._id === deleteTaskId)
-      );
+      const filteredTask = taskList.filter((task) => task._id === deleteTaskId);
       setTaskList(filteredTask);
     }
   };
@@ -87,6 +87,7 @@ export default function Task({ task, taskList, setTaskList }) {
           <span
             style={{ marginRight: ".5rem" }}
             className={checked ? "strike-text" : ""}
+            onClick={() => navigate("/todo", { state: { task } })}
           >
             {task.title}
           </span>
