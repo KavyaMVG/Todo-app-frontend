@@ -6,6 +6,7 @@ import axios from "axios";
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -53,7 +54,11 @@ export default function TodoList() {
   const [taskList, setTaskList] = useState([]);
   const [searchTodo, setSearchTodo] = useState("");
   const userId = localStorage.getItem("id");
+  const navigate = useNavigate();
   useEffect(() => {
+    if (!userId) {
+      navigate("/login");
+    }
     const getAllData = async () => {
       const response = await axios.get(
         `http://localhost:3001/todo/allTasks/${userId}`
@@ -62,7 +67,7 @@ export default function TodoList() {
     };
 
     getAllData();
-  }, [userId]);
+  }, [userId, navigate]);
 
   const todoSearch = async (e) => {
     console.log("hello");

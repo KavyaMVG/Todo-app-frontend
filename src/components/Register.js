@@ -4,7 +4,8 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -25,8 +26,9 @@ const Register = () => {
         email,
         password,
       });
-      console.log(response.status);
+      console.log(response);
       if (response.status === 201) {
+        localStorage.setItem("id", response.data._id);
         navigate("/home");
       }
     } catch (err) {
@@ -89,6 +91,9 @@ const Register = () => {
                 Sign in
               </button>
             </form>
+            <Link to="/login" className="link">
+              Already have an account?<Button>Login</Button>
+            </Link>
           </div>
         </Box>
       </Container>

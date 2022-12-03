@@ -4,7 +4,8 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Button } from "@mui/material";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,7 +23,7 @@ const Login = () => {
       console.log(response);
 
       if (response.status === 200) {
-        localStorage.setItem("id", response.data.id);
+        localStorage.setItem("id", response.data._id);
         navigate("/home");
       }
     } catch (err) {
@@ -72,6 +73,9 @@ const Login = () => {
               </button>
               {error ? <p style={{ color: "red" }}>Error logging in...</p> : ""}
             </form>
+            <Link to="/" className="link">
+              Don't have an account? <Button>Register</Button>
+            </Link>
           </div>
         </Box>
       </Container>

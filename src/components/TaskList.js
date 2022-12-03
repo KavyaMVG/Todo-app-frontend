@@ -30,7 +30,7 @@ export default function TaskList() {
   const task = (location.state && location.state.task) || null;
 
   const [todo, setTodo] = useState("");
-  const [todoList, setTodoList] = useState(task.tasks);
+  const [todoList, setTodoList] = useState(task && task.tasks);
   const userId = localStorage.getItem("id");
   const [open, setOpen] = useState("");
   const [editTodo, setEditTodo] = useState("");
@@ -49,6 +49,7 @@ export default function TaskList() {
     if (response.status === 200) {
       setTodoList((prev) => [...prev, todo]);
     }
+    setTodo("");
     console.log(response.data);
   };
 
@@ -81,10 +82,13 @@ export default function TaskList() {
   };
 
   useEffect(() => {
-    if (!location.state) {
-      navigate("/home");
+    if (!userId) {
+      return navigate("/login");
     }
-  }, [location.state, navigate]);
+    if (!location.state) {
+      return navigate("/home");
+    }
+  }, [location.state, navigate, userId]);
 
   return (
     <div>
