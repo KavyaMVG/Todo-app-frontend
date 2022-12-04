@@ -31,11 +31,11 @@ export default function Task({ task, taskList, setTaskList }) {
     const response = await axios.delete("http://localhost:3001/todo/delete", {
       deleteId: deleteTaskId,
     });
-    const { data } = response;
 
-    if (data.msg.deletedCount === 1) {
-      const filteredTask = taskList.filter((task) => task._id === deleteTaskId);
+    if (response.status === 200) {
+      const filteredTask = taskList.filter((task) => task._id !== deleteTaskId);
       setTaskList(filteredTask);
+      console.log(filteredTask);
     }
   };
 

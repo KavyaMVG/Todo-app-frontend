@@ -36,7 +36,7 @@
   margin-bottom: 1rem;
   padding: 1em;
   font-size: 1rem;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
   border: 0;
   border: 1px solid #000;
 }
@@ -53,8 +53,9 @@
 }
 
 .MuiButtonBase-root.MuiButton-contained.MuiButton-containedPrimary {
-  background-color: #f2f2f2;
+  background-color: rgb(120, 157, 135);
   color: #000;
+  margin-left: 0.5rem;
 }
 
 form {
@@ -82,13 +83,15 @@ form {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0.3rem 0.5rem;
+  padding: 0.5em 0.5em;
 }
 
 .addTask {
   margin-bottom: 1.5rem;
   width: 85%;
   padding: 0.6rem;
+  background-color: #f4f4f4;
+  border: 1px solid gray;
 }
 ::placeholder {
   font-size: 1rem;

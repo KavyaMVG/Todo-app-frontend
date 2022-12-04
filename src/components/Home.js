@@ -16,6 +16,7 @@ export default function Home() {
             minHeight: "100vh",
             margin: "2rem",
             padding: "1rem",
+            position: "relative",
           }}
         >
           <TodoList />

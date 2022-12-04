@@ -108,6 +108,7 @@ export default function TodoList() {
     <div className="main">
       <form onSubmit={addTask}>
         <div className="textfield">
+          <h1 style={{ textAlign: "center" }}>Add Todo</h1>
           <input
             required
             className="addTask"

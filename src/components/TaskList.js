@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
-
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useState } from "react";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import EditIcon from "@mui/icons-material/Edit";
@@ -23,6 +23,16 @@ const style = {
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+};
+
+const style2 = {
+  position: "absolute",
+  top: "7%",
+  left: "6%",
+  fontSize: "2rem",
+  backgroundColor: "rgb(120, 157, 135)",
+  color: "#f2f2f2",
+  borderRadius: "3px",
 };
 
 export default function TaskList() {
@@ -55,6 +65,8 @@ export default function TaskList() {
 
   const deleteTodo = async (idx) => {
     const filteredList = todoList.filter((todo, currIdx) => currIdx !== idx);
+    console.log("fil", filteredList);
+    console.log("id", idx);
 
     const response = await axios.put(
       `http://localhost:3001/todo/edit?id=${task._id}`,
@@ -62,6 +74,7 @@ export default function TaskList() {
         tasks: filteredList,
       }
     );
+    console.log(response);
     if (response.status === 200) {
       setTodoList(filteredList);
     }
@@ -105,6 +118,7 @@ export default function TaskList() {
         >
           <div>
             <h1 style={{ textAlign: "center" }}>{task && task.title}</h1>
+            <ArrowBackIcon sx={style2} onClick={() => navigate("/home")} />
             <form className="todo-input" onSubmit={addTodo}>
               <input
                 required
@@ -135,7 +149,11 @@ export default function TaskList() {
                   <div className="hero">
                     <div>
                       {/* <Checkbox style={{ marginRight: ".5rem" }} /> */}
-                      <span style={{ marginRight: "1rem" }}>{todo}</span>
+                      <span
+                        style={{ marginRight: "1rem", marginLeft: ".5rem" }}
+                      >
+                        {todo}
+                      </span>
                     </div>
 
                     <div className="icons">
