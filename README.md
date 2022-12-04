@@ -1,6 +1,6 @@
 # Todo Application
 
-Application with to maintain a todo-list and it's CRUD operations
+Application to maintain a todo-list and it's CRUD operations
 
 ## Technology used
 
@@ -25,7 +25,7 @@ Material UI, React JS, AppWrite
 ## To run the application
 
 - Clone the project <br>
-  `https://github.com/KavyaMVG/Chat-app-frontend.git`
+  `https://github.com/KavyaMVG/todo-app-frontend.git`
 
 - Install dependencies <br>
   `npm install` <br>
