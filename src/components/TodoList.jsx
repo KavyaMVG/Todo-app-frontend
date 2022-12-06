@@ -19,7 +19,9 @@ const Search = styled("div")(({ theme }) => ({
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     width: "auto",
-    border: "1px solid gray",
+    backgroundColor: "#f4f6f7",
+    margin: "1rem 0",
+    border: "2px solid #f4f6f7",
   },
 }));
 
@@ -41,7 +43,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
+      width: "50ch",
       "&:focus": {
         width: "20ch",
       },
@@ -71,11 +73,11 @@ export default function TodoList() {
 
   const todoSearch = async (e) => {
     console.log("hello");
-
-    setSearchTodo(e.target.value);
+    const searchText = e.target.value;
+    setSearchTodo(searchText);
     try {
       const response = await axios.get(
-        `http://localhost:3001/todo/search?search=${searchTodo}&userId=${userId}`
+        `http://localhost:3001/todo/search?search=${searchText}&userId=${userId}`
       );
       setTaskList(response.data);
     } catch (err) {
@@ -107,8 +109,9 @@ export default function TodoList() {
   return (
     <div className="main">
       <form onSubmit={addTask}>
+        <h1 style={{ textAlign: "center" }}>Add Todo</h1>
+
         <div className="textfield">
-          <h1 style={{ textAlign: "center" }}>Add Todo</h1>
           <input
             required
             className="addTask"
@@ -121,9 +124,11 @@ export default function TodoList() {
             value="Add"
             variant="contained"
             style={{
-              backgroundColor: "#789D87",
+              backgroundColor: "#1a759f",
               color: "#FFF",
               marginLeft: ".5rem",
+              padding: "0.7rem 1rem",
+              width: "23%",
             }}
           >
             Add

@@ -12,11 +12,12 @@ export default function Home() {
       <Container maxWidth="md">
         <Box
           sx={{
-            backgroundColor: "#f2f2f2",
+            backgroundColor: "#fff",
             minHeight: "100vh",
-            margin: "2rem",
-            padding: "1rem",
+            margin: "1rem",
+            padding: "2rem",
             position: "relative",
+            borderRadius: "5px",
           }}
         >
           <TodoList />

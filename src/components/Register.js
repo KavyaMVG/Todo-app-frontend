@@ -11,6 +11,7 @@ const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const navigate = useNavigate();
 
@@ -26,13 +27,13 @@ const Register = () => {
         email,
         password,
       });
-      console.log(response);
       if (response.status === 201) {
         localStorage.setItem("id", response.data._id);
         navigate("/home");
       }
     } catch (err) {
       console.log(err);
+      setError(true);
     }
   };
 
@@ -43,10 +44,11 @@ const Register = () => {
       <Container maxWidth="md">
         <Box
           sx={{
-            backgroundColor: "#f2f2f2",
+            backgroundColor: "#fff",
             minHeight: "100vh",
             margin: "1rem",
             padding: "2rem",
+            borderRadius: "5px",
           }}
         >
           <div>
@@ -90,6 +92,7 @@ const Register = () => {
               >
                 Sign in
               </button>
+              {error ? <p style={{ color: "red" }}>User already exists</p> : ""}
             </form>
             <Link to="/login" className="link">
               Already have an account?<Button>Login</Button>

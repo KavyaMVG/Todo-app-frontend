@@ -15,6 +15,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #000;
 }
 
 .main {
@@ -36,13 +37,17 @@
   margin-bottom: 1rem;
   padding: 1em;
   font-size: 1rem;
-  /* background-color: #f2f2f2; */
   border: 0;
-  border: 1px solid #000;
+  border: 1px solid #f4f6f7;
+  border-radius: 5px;
+  background-color: #f4f6f7;
 }
 .btn {
-  background-color: rgb(120, 157, 135);
+  background-color: #1a759f;
   color: #f2f2f2;
+  border: 0;
+  border-radius: 5px;
+  margin-top: 1rem;
 }
 
 .todo-input {
@@ -53,8 +58,8 @@
 }
 
 .MuiButtonBase-root.MuiButton-contained.MuiButton-containedPrimary {
-  background-color: rgb(120, 157, 135);
-  color: #000;
+  background-color: #1a759f;
+  color: #fff;
   margin-left: 0.5rem;
 }
 
@@ -77,24 +82,28 @@ form {
 }
 
 .hero {
-  /* background-color: rgb(209, 213, 222); */
-  background-color: #ccddd3;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0.5em 0.5em;
+  background-color: #f4f6f7;
+  border-radius: 5px;
 }
 
 .addTask {
   margin-bottom: 1.5rem;
-  width: 85%;
+  width: 75%;
   padding: 0.6rem;
   background-color: #f4f4f4;
-  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 1rem;
+  border-color: #f4f4f4;
+  border: 0;
 }
 ::placeholder {
   font-size: 1rem;
+  color: #000;
 }
 
 .textfield {

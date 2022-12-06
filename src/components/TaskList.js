@@ -27,14 +27,14 @@ const style = {
 
 const style2 = {
   position: "absolute",
-  top: "7%",
-  left: "6%",
-  fontSize: "2rem",
-  backgroundColor: "rgb(120, 157, 135)",
+  top: "11%",
+  left: "8%",
+  fontSize: "1.7rem",
+  backgroundColor: "#1a759f",
   color: "#f2f2f2",
   borderRadius: "3px",
+  padding: ".2rem .3rem",
 };
-
 export default function TaskList() {
   const location = useLocation();
   const task = (location.state && location.state.task) || null;
@@ -110,10 +110,12 @@ export default function TaskList() {
       <Container maxWidth="md">
         <Box
           sx={{
-            backgroundColor: "#f2f2f2",
+            backgroundColor: "#fff",
             minHeight: "100vh",
             margin: "1rem",
-            padding: "1rem",
+            padding: "2rem",
+            position: "relative",
+            borderRadius: "5px",
           }}
         >
           <div>
@@ -132,9 +134,11 @@ export default function TaskList() {
                 value="Add"
                 variant="contained"
                 style={{
-                  backgroundColor: "#789D87",
+                  backgroundColor: "#1a759f",
                   color: "#FFF",
                   marginLeft: ".5rem",
+                  padding: "0.7rem 0.1rem",
+                  width: "19%",
                 }}
               >
                 Add
@@ -148,7 +152,6 @@ export default function TaskList() {
                 <div className="taskList">
                   <div className="hero">
                     <div>
-                      {/* <Checkbox style={{ marginRight: ".5rem" }} /> */}
                       <span
                         style={{ marginRight: "1rem", marginLeft: ".5rem" }}
                       >

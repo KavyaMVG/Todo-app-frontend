@@ -15,6 +15,7 @@ const Login = () => {
   const loginUser = async (e) => {
     e.preventDefault();
     setError(false);
+
     try {
       const response = await axios.post("http://localhost:3001/user/login", {
         email,
@@ -38,10 +39,11 @@ const Login = () => {
       <Container maxWidth="md">
         <Box
           sx={{
-            backgroundColor: "#f2f2f2",
+            backgroundColor: "#fff",
             minHeight: "100vh",
             margin: "1rem",
-            padding: "1rem",
+            padding: "2rem",
+            borderRadius: "5px",
           }}
         >
           <div>

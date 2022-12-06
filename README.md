@@ -16,11 +16,11 @@ Material UI, React JS, AppWrite
 - Search todo
 - User authentication
 
-![Create todo page](./assets/home.png)
+![Create todo page](./assets/homepage.png)
 ![Register-page](./assets/register.png)
 ![Login-page](./assets/login.png)
-![tasks](./assets/sub-todo.png)
-![Update](./assets/updateTodo.png)
+![tasks](./assets/subtodo.png)
+![Update](./assets/updatePage.png)
 
 ## To run the application
 
