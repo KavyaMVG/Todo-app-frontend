@@ -92,6 +92,7 @@ export default function Task({ task, taskList, setTaskList }) {
             {task.title}
           </span>
         </div>
+
         <div className="icons">
           <DeleteOutlineIcon
             style={{ marginRight: ".5rem" }}

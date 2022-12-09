@@ -55,6 +55,7 @@ export default function TodoList() {
   const [task, setTask] = useState("");
   const [taskList, setTaskList] = useState([]);
   const [searchTodo, setSearchTodo] = useState("");
+  const [alphabetSort, setAlphabetSort] = useState("ASC");
   const userId = localStorage.getItem("id");
   const navigate = useNavigate();
   useEffect(() => {
@@ -84,6 +85,20 @@ export default function TodoList() {
       console.log(err);
     }
   };
+  const taskSort = (e) => {
+    e.preventDefault();
+    if (alphabetSort === "ASC") {
+      const sortedTaskList = [...taskList];
+      sortedTaskList.sort((a, b) => a.title.localeCompare(b.title));
+      setTaskList(sortedTaskList);
+      setAlphabetSort("DESC");
+    } else if (alphabetSort === "DESC") {
+      const sortedTaskList = [...taskList];
+      sortedTaskList.sort((a, b) => b.title.localeCompare(a.title));
+      setTaskList(sortedTaskList);
+      setAlphabetSort("ASC");
+    }
+  };
 
   const addTask = async (e) => {
     e.preventDefault();
@@ -96,6 +111,7 @@ export default function TodoList() {
         userId,
       });
       const { data } = response;
+
       if (response.status === 201) {
         setTaskList((prev) => {
           return [...prev, { title: task, _id: data.response._id }];
@@ -145,6 +161,11 @@ export default function TodoList() {
               onChange={(e) => todoSearch(e)}
             />
           </Search>
+        </div>
+        <div className="sort">
+          <button onClick={(e) => taskSort(e)} className="sort-btn">
+            Sort
+          </button>
         </div>
 
         {taskList.map((task) => {

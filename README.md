@@ -15,6 +15,7 @@ Material UI, React JS, AppWrite
 - Delete todo
 - Search todo
 - User authentication
+- Responsiveness
 
 ![Register-page](./assets/register.png)
 ![Login-page](./assets/login.png)
@@ -22,6 +23,14 @@ Material UI, React JS, AppWrite
 ![Update](./assets/updatePage.png)
 
 ![tasks](./assets/subtodo.png)
+
+## Mobile view
+
+![Register-page](./assets/register-mobile.png)
+![Login-page](./assets/login-mobile.png)
+![Create todo page](./assets/todolist-mobile.png)
+
+![tasks](./assets/taskList-mobile.png)
 
 ## To run the application
 

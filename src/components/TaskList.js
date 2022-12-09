@@ -121,7 +121,7 @@ export default function TaskList() {
           <div>
             <h1 style={{ textAlign: "center" }}>{task && task.title}</h1>
             <ArrowBackIcon sx={style2} onClick={() => navigate("/home")} />
-            <form className="todo-input" onSubmit={addTodo}>
+            <form className="todo-input " onSubmit={addTodo}>
               <input
                 required
                 className="addTask"
@@ -149,7 +149,7 @@ export default function TaskList() {
           {todoList &&
             todoList.map((todo, idx) => {
               return (
-                <div className="taskList">
+                <div className="taskList sub-todo">
                   <div className="hero">
                     <div>
                       <span

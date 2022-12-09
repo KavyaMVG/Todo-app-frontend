@@ -18,6 +18,24 @@
   color: #000;
 }
 
+.sort {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-right: 2rem;
+  margin-bottom: 2rem;
+}
+
+.sort-btn {
+  background-color: #1a759f;
+  color: #fff;
+  border: 0;
+  width: 20%;
+  padding: 0.9rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
 .main {
   padding: 1rem;
   display: flex;
@@ -110,4 +128,65 @@ form {
   width: 95%;
   margin: auto;
   padding: 1rem;
+}
+
+@media (max-width: 480px) {
+  /* body {
+    font-size: 14px;
+  } */
+  .MuiBox-root.css-1is0vm8 {
+    margin: 1rem;
+    padding: 0;
+  }
+  .addTask {
+    width: 74%;
+  }
+  .main {
+    padding: 0;
+  }
+  .MuiButtonBase-root.MuiButton-contained.MuiButton-containedPrimary {
+    width: 30%;
+  }
+  .sort {
+    margin-right: 1.4rem;
+  }
+  .sort-btn {
+    width: 30%;
+  }
+  .MuiContainer-root.css-xdmu94-MuiContainer-root {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .taskList {
+    margin-bottom: 1.3rem;
+    padding: 0 1rem;
+  }
+  .textField {
+    padding: 1rem;
+  }
+  .userInfo {
+    width: auto;
+  }
+  .MuiBox-root.css-n292df {
+    padding: 1rem;
+  }
+
+  .todo-input {
+    padding: 1rem;
+    margin-top: 3rem;
+  }
+  .MuiSvgIcon-root.css-1a62au0-MuiSvgIcon-root {
+    top: 8%;
+    left: 5%;
+  }
+  .App-header {
+    margin: 0;
+  }
+  .sub-todo {
+    padding: 0 1rem 0 1rem;
+  }
+
+  .MuiBox-root.css-1wnsr1i {
+    width: 359px;
+  }
 }
