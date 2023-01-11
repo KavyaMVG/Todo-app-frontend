@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import { config } from "../config";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -21,8 +22,7 @@ const Register = () => {
       if (password !== confirmPassword) {
         return;
       }
-      console.log(name);
-      const response = await axios.post("http://localhost:3001/user/register", {
+      const response = await axios.post(`${config.API.baseURL}/user/register`, {
         name,
         email,
         password,

@@ -12,6 +12,7 @@ import EditIcon from "@mui/icons-material/Edit";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { config } from "../config";
 
 const style = {
   position: "absolute",
@@ -50,7 +51,7 @@ export default function TaskList() {
   const addTodo = async (e) => {
     e.preventDefault();
     const response = await axios.put(
-      `http://localhost:3001/todo/edit?id=${task._id}`,
+      `${config.API.baseURL}/todo/edit?id=${task._id}`,
       {
         tasks: [...todoList, todo],
         userId,
@@ -65,11 +66,9 @@ export default function TaskList() {
 
   const deleteTodo = async (idx) => {
     const filteredList = todoList.filter((todo, currIdx) => currIdx !== idx);
-    console.log("fil", filteredList);
-    console.log("id", idx);
 
     const response = await axios.put(
-      `http://localhost:3001/todo/edit?id=${task._id}`,
+      `${config.API.baseURL}/todo/edit?id=${task._id}`,
       {
         tasks: filteredList,
       }
@@ -87,7 +86,7 @@ export default function TaskList() {
       }
       return todo;
     });
-    await axios.put(`http://localhost:3001/todo/edit?id=${task._id}`, {
+    await axios.put(`${config.API.baseURL}/todo/edit?id=${task._id}`, {
       tasks: updatedList,
     });
     setTodoList(updatedList);

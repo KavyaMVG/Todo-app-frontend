@@ -7,6 +7,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import { config } from "../config";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -64,7 +65,7 @@ export default function TodoList() {
     }
     const getAllData = async () => {
       const response = await axios.get(
-        `http://localhost:3001/todo/allTasks/${userId}`
+        `${config.API.baseURL}/todo/allTasks/${userId}`
       );
       setTaskList(response.data);
     };
@@ -78,7 +79,7 @@ export default function TodoList() {
     setSearchTodo(searchText);
     try {
       const response = await axios.get(
-        `http://localhost:3001/todo/search?search=${searchText}&userId=${userId}`
+        `${config.API.baseURL}/todo/search?search=${searchText}&userId=${userId}`
       );
       setTaskList(response.data);
     } catch (err) {
@@ -105,7 +106,7 @@ export default function TodoList() {
     if (!task) return;
 
     try {
-      const response = await axios.post("http://localhost:3001/todo/", {
+      const response = await axios.post(`${config.API.baseURL}/todo/`, {
         title: task,
         tasks: [],
         userId,

@@ -6,6 +6,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@mui/material";
+import { config } from "../config";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,7 +19,7 @@ const Login = () => {
     setError(false);
 
     try {
-      const response = await axios.post("http://localhost:3001/user/login", {
+      const response = await axios.post(`${config.API.baseURL}/user/login`, {
         email,
         password,
       });

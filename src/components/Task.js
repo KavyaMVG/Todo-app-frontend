@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { config } from "../config";
 
 const style = {
   position: "absolute",
@@ -28,7 +29,7 @@ export default function Task({ task, taskList, setTaskList }) {
   const navigate = useNavigate();
 
   const deleteTask = async (deleteTaskId) => {
-    const response = await axios.delete("http://localhost:3001/todo/delete", {
+    const response = await axios.delete(`${config.API.baseURL}/todo/delete`, {
       deleteId: deleteTaskId,
     });
 
@@ -41,7 +42,7 @@ export default function Task({ task, taskList, setTaskList }) {
 
   const isChecked = async (taskId) => {
     const response = await axios.put(
-      `http://localhost:3001/todo/edit?id=${taskId}`,
+      `${config.API.baseURL}/todo/edit?id=${taskId}`,
       {
         isComplete: !checked,
       }
@@ -52,7 +53,7 @@ export default function Task({ task, taskList, setTaskList }) {
   };
   const updateTask = async (taskId) => {
     const { data } = await axios.put(
-      `http://localhost:3001/todo/edit?id=${taskId}`,
+      `${config.API.baseURL}/todo/edit?id=${taskId}`,
       {
         title: editTask,
       }
