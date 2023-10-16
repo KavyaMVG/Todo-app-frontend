@@ -29,6 +29,7 @@ export default function Task({ task, taskList, setTaskList }) {
   const navigate = useNavigate();
 
   const deleteTask = async (deleteTaskId) => {
+    console.log("delete", deleteTaskId);
     const response = await axios.delete(`${config.API.baseURL}/todo/delete`, {
       deleteId: deleteTaskId,
     });
@@ -36,7 +37,6 @@ export default function Task({ task, taskList, setTaskList }) {
     if (response.status === 200) {
       const filteredTask = taskList.filter((task) => task._id !== deleteTaskId);
       setTaskList(filteredTask);
-      console.log(filteredTask);
     }
   };
 
@@ -86,7 +86,7 @@ export default function Task({ task, taskList, setTaskList }) {
             onClick={() => isChecked(task._id)}
           />
           <span
-            style={{ marginRight: ".5rem" }}
+            style={{ marginRight: ".5rem", cursor: "pointer" }}
             className={checked ? "strike-text" : ""}
             onClick={() => navigate("/todo", { state: { task } })}
           >
@@ -96,11 +96,11 @@ export default function Task({ task, taskList, setTaskList }) {
 
         <div className="icons">
           <DeleteOutlineIcon
-            style={{ marginRight: ".5rem" }}
+            style={{ marginRight: ".5rem", cursor: "pointer" }}
             onClick={() => deleteTask(task._id)}
           />
           <EditIcon
-            style={{ marginRight: ".5rem" }}
+            style={{ marginRight: ".5rem", cursor: "pointer" }}
             onClick={() => {
               setEditTask(task.title);
               setOpen(true);

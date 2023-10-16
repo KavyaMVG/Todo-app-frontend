@@ -144,7 +144,6 @@ export default function TaskList() {
               </Button>
             </form>
           </div>
-          {console.log(todoList)}
           {todoList &&
             todoList.map((todo, idx) => {
               return (

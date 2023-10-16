@@ -8,6 +8,7 @@ import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { config } from "../config";
+import SortIcon from '@mui/icons-material/Sort';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -74,7 +75,6 @@ export default function TodoList() {
   }, [userId, navigate]);
 
   const todoSearch = async (e) => {
-    console.log("hello");
     const searchText = e.target.value;
     setSearchTodo(searchText);
     try {
@@ -164,9 +164,7 @@ export default function TodoList() {
           </Search>
         </div>
         <div className="sort">
-          <button onClick={(e) => taskSort(e)} className="sort-btn">
-            Sort
-          </button>
+          <SortIcon onClick={(e) => taskSort(e)} style={{cursor:'pointer'}} />
         </div>
 
         {taskList.map((task) => {

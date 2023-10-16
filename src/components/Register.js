@@ -10,6 +10,7 @@ import { config } from "../config";
 
 const Register = () => {
   const [name, setName] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
@@ -20,6 +21,7 @@ const Register = () => {
     e.preventDefault();
     try {
       if (password !== confirmPassword) {
+        setPasswordError(true);
         return;
       }
       const response = await axios.post(`${config.API.baseURL}/user/register`, {
@@ -92,7 +94,13 @@ const Register = () => {
               >
                 Sign in
               </button>
-              {error ? <p style={{ color: "red" }}>User already exists</p> : ""}
+              {error ? (
+                <p style={{ color: "red" }}>User already exists</p>
+              ) : passwordError ? (
+                <p style={{ color: "red" }}>Password is not matching</p>
+              ) : (
+                ""
+              )}
             </form>
             <Link to="/login" className="link">
               Already have an account?<Button>Login</Button>
