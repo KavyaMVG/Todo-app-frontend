@@ -29,7 +29,6 @@ export default function Task({ task, taskList, setTaskList }) {
   const navigate = useNavigate();
 
   const deleteTask = async (deleteTaskId) => {
-    console.log("delete", deleteTaskId);
     const response = await axios.delete(`${config.API.baseURL}/todo/delete`, {
       deleteId: deleteTaskId,
     });
@@ -48,8 +47,6 @@ export default function Task({ task, taskList, setTaskList }) {
       }
     );
     setChecked(!checked);
-
-    console.log(response);
   };
   const updateTask = async (taskId) => {
     const { data } = await axios.put(
@@ -72,9 +69,13 @@ export default function Task({ task, taskList, setTaskList }) {
     setOpen(false);
   };
 
-  useEffect(() => {
+ useEffect(() => {
+  if (typeof task.isComplete === "boolean") {
     setChecked(task.isComplete);
-  }, [task.isComplete]);
+  } else {
+    setChecked(false);
+  }
+}, [task.isComplete]);
 
   return (
     <div className="taskList">
@@ -83,7 +84,7 @@ export default function Task({ task, taskList, setTaskList }) {
           <Checkbox
             style={{ marginRight: ".5rem" }}
             checked={checked}
-            onClick={() => isChecked(task._id)}
+            onChange={() => isChecked(task._id)}
           />
           <span
             style={{ marginRight: ".5rem", cursor: "pointer" }}

@@ -9,17 +9,24 @@ import { Button } from "@mui/material";
 import { config } from "../config";
 
 const Register = () => {
-  const [name, setName] = useState("");
   const [passwordError, setPasswordError] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [value, setValue] = useState([]);
   const navigate = useNavigate();
 
   const addUser = async (e) => {
     e.preventDefault();
     try {
+      const {name, email, password} = value
+      if(!name || !email || !password){
+        setError("Name, Email and Password are required")
+        return
+      }
+      if(password.length < 6){
+        setError("Password must have 6 characters");
+        return
+      }
       if (password !== confirmPassword) {
         setPasswordError(true);
         return;
@@ -34,10 +41,12 @@ const Register = () => {
         navigate("/home");
       }
     } catch (err) {
-      console.log(err);
-      setError(true);
+      setError(err?.response?.data);
     }
   };
+  const handleFieldChange = (fieldName, fieldValue) =>{
+    setValue((prev) => ({...prev, [fieldName]: fieldValue.target.value}))
+  }
 
   return (
     <div>
@@ -59,8 +68,8 @@ const Register = () => {
               <input
                 type="text"
                 className="textField"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={value.name}
+                onChange={(value) => handleFieldChange("name", value)}
                 placeholder="Name"
               />
               <input
@@ -68,16 +77,17 @@ const Register = () => {
                 type="email"
                 className="textField"
                 placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={value.email}
+                onChange={(value) => handleFieldChange("email", value)}
               />
               <input
                 required
                 type="password"
                 className="textField"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Password(6 characters minimun)"
+                pattern=".{0}|.{6,}" 
+                value={value.password}
+                onChange={(value) => handleFieldChange("password", value)}
               />
               <input
                 required
@@ -85,6 +95,7 @@ const Register = () => {
                 className="textField"
                 placeholder="Confirm Password"
                 value={confirmPassword}
+                pattern=".{0}|.{6,}" 
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
               <button
@@ -95,7 +106,7 @@ const Register = () => {
                 Sign in
               </button>
               {error ? (
-                <p style={{ color: "red" }}>User already exists</p>
+                <p style={{ color: "red" }}>{error}</p>
               ) : passwordError ? (
                 <p style={{ color: "red" }}>Password is not matching</p>
               ) : (
