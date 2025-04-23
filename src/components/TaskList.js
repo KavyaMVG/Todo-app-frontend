@@ -61,7 +61,6 @@ export default function TaskList() {
       setTodoList((prev) => [...prev, todo]);
     }
     setTodo("");
-    console.log(response.data);
   };
 
   const deleteTodo = async (idx) => {
@@ -73,7 +72,6 @@ export default function TaskList() {
         tasks: filteredList,
       }
     );
-    console.log(response);
     if (response.status === 200) {
       setTodoList(filteredList);
     }
@@ -149,7 +147,7 @@ export default function TaskList() {
               return (
                 <div className="taskList sub-todo">
                   <div className="hero">
-                    <div>
+                    <div key={idx}>
                       <span
                         style={{ marginRight: "1rem", marginLeft: ".5rem" }}
                       >
@@ -157,7 +155,7 @@ export default function TaskList() {
                       </span>
                     </div>
 
-                    <div className="icons">
+                    <div className="icons" key={idx}>
                       <DeleteOutlineIcon
                         onClick={() => deleteTodo(idx)}
                         style={{ marginRight: ".5rem" }}
@@ -188,6 +186,7 @@ export default function TaskList() {
                         value="Add"
                         variant="contained"
                         onClick={() => updateTodo(idx)}
+                         key={idx}
                       >
                         Update
                       </Button>
