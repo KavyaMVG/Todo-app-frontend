@@ -1,6 +1,6 @@
 const prod = {
   API: {
-    baseURL: "http://localhost:3001",
+    baseURL: `${process.env.REACT_APP_BASE_URL}`,
   },
 };
 
